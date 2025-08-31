@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <nav>
+        <a href={% url "pagina" %}>Inicio</a>
+        <a href={% url "crear_cigarro" %}>Crear cigarro</a>
+        <a href={% url "listado_de_cigarros" %}>Cigarros</a>
+    </nav>
+
+    <h1>Formulario de creacion de cigarros</h1>
+
+    <form action={% url "crear_cigarro" %} method="POST">
+        {% csrf_token %}
+        
+        {{formulario}}
+
+         <input type="submit" value="Crear">
+
+    </form>    
+</body>
+</html>
