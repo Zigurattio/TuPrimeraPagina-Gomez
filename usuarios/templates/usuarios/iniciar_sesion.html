@@ -11,18 +11,16 @@
         <a href={% url "pagina" %}>Inicio</a>
         <a href={% url "crear_cigarro" %}>Crear cigarro</a>
         <a href={% url "listado_de_cigarros" %}>Cigarros</a>
-        <a href={% url "iniciar_sesion" %}>Inciar Sesion</a>
     </nav>
 
-    <h1>Eliminar cigarro</h1>
+    <h1>Iniciar sesion{{cigarro.id}}</h1>
 
-    <form action={% url "eliminar_cigarro" cigarro.id %} method="POST">
+    <form action={% url "iniciar_sesion" %} method="POST">
         {% csrf_token %}
         
-       <p>
-         ¿Estas seguro que deseas eliminar el cigarro {{cigarro}}?
-       </p>
-         <input type="submit" value="Eliminar">
+        {{formulario}}
+
+         <input type="submit" value="Iniciar Sesion">
 
     </form>    
 </body>
