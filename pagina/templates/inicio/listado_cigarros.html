@@ -22,6 +22,7 @@
             {{cigarro}}
             |<a href={% url 'detalle_cigarro' cigarro.id %}>Detalle</a>|
             |<a href={% url 'actualizar_cigarro' cigarro.id %}>Actualizar</a>|
+            |<a href={% url 'eliminar_cigarro' cigarro.id %}>Eliminar</a>|
         </li>
 
     {% endfor %}
