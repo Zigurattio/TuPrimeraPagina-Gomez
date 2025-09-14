@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from pagina.models import Cigarro
 from pagina.forms import FormularioCreacionCigarro
+from django.views.generic.edit import UpdateView
+from django.urls import reverse_lazy
 
 def inicio(request):
     return render(request, 'inicio/inicio.html') 
@@ -41,3 +43,12 @@ def detalle_cigarro(request, cigarro_id):
     cigarro = Cigarro.objects.get(id=cigarro_id)
     
     return render (request, 'inicio/detalle_cigarro.html', {'cigarro': cigarro}) 
+
+class ActualizarCigarro(UpdateView):
+    model = Cigarro
+    template_name = "inicio/actualizar_cigarro.html"
+    fields = "__all__"
+    success_url = reverse_lazy("listado_cigarros"),
+
+    
+    
