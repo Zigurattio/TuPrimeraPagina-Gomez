@@ -6,27 +6,24 @@
     <title>Document</title>
 </head>
 <body>
-    
     <nav>
         <a href={% url "pagina" %}>Inicio</a>
         <a href={% url "crear_cigarro" %}>Crear cigarro</a>
         <a href={% url "listado_de_cigarros" %}>Cigarros</a>
     </nav>
-    
-    <h1>Listado de cigarros</h1>
+
+
+    <h1>detalle del acigarro {{cigarro.id}}</h1>
 
     <ul>
-    {% for cigarro in listado_de_cigarros  %}
-
         <li>
-            {{cigarro}}
-            |<a href={% url 'detalle_cigarro' cigarro.id %}>detalle</a>|
+            marca: {{cigarro.marca}}
         </li>
+        <li>
+            cantidad: {{cigarro.cantidad}}
 
-    {% endfor %}
-
+        </li>
     </ul>
-
 
 </body>
 </html>

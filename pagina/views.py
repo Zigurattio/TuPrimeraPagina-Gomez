@@ -33,3 +33,11 @@ def listado_cigarros(request):
     cigarros = Cigarro.objects.all()
     
     return render(request, 'inicio/listado_cigarros.html',{'listado_de_cigarros' : cigarros})
+
+
+def detalle_cigarro(request, cigarro_id):
+    
+    
+    cigarro = Cigarro.objects.get(id=cigarro_id)
+    
+    return render (request, 'inicio/detalle_cigarro.html', {'cigarro': cigarro}) 
