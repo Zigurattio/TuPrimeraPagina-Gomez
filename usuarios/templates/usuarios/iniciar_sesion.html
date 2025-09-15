@@ -11,6 +11,11 @@
         <a href={% url "pagina" %}>Inicio</a>
         <a href={% url "crear_cigarro" %}>Crear cigarro</a>
         <a href={% url "listado_de_cigarros" %}>Cigarros</a>
+        <form action={% url "cerrar_sesion" %} method="post">
+            {% csrf_token %}
+
+            <input type="submit" value="Cerrar Sesion">
+        </form>    
     </nav>
 
     <h1>Iniciar sesion{{cigarro.id}}</h1>

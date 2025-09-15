@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,20 +6,13 @@
     <title>Document</title>
 </head>
 <body>
+
     <nav>
         <a href={% url "pagina" %}>Inicio</a>
         <a href={% url "crear_cigarro" %}>Crear cigarro</a>
         <a href={% url "listado_de_cigarros" %}>Cigarros</a>
-        <a href={% url "iniciar_sesion" %}>Inciar Sesion</a>
-        <form action={% url "cerrar_sesion" %} method="post">
-            {% csrf_token %}
-
-            <input type="submit" value="Cerrar Sesion">
-        </form>    
     </nav>
 
-
-    <h1>HOLA SOY INICIO</h1>
-
+    <h1>Cerraste sesion correctamente</h1>
 </body>
 </html>
