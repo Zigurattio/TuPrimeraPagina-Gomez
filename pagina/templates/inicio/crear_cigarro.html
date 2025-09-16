@@ -2,7 +2,7 @@
 {% block contenido %}
     <h1>Formulario de creacion de cigarros</h1>
 
-    <form action={% url "crear_cigarro" %} method="POST">
+    <form action={% url "crear_cigarro" %} method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         
         {{formulario}}

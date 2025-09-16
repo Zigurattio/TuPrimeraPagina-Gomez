@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block contenido %}
-    <h1>detalle del acigarro {{cigarro.id}}</h1>
+    <h1>detalle del cigarro {{cigarro.id}}</h1>
 
     <ul>
         <li>
@@ -10,6 +10,14 @@
             cantidad: {{cigarro.cantidad}}
 
         </li>
+        <li>
+            Imagen: 
+            {% if cigarro.imagen %}
+                <img src="{{ cigarro.imagen.url }}" alt="Imagen del cigarro" height="200">
+            {% endif %}
+            
+        </li>
+
     </ul>
 {% endblock contenido %}
 

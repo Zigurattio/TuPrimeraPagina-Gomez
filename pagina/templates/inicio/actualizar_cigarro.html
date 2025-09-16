@@ -2,7 +2,7 @@
 {% block contenido %}
     <h1>Formulario de actualizacion de cigarros{{cigarro.id}}</h1>
 
-    <form action={% url "actualizar_cigarro" cigarro.id %} method="POST">
+    <form action={% url "actualizar_cigarro" cigarro.id %} method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         
         {{form}}

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block contenido %}
-    <h1>Iniciar sesion{{cigarro.id}}</h1>
+    <h1>Iniciar sesion</h1>
 
     <form action={% url "iniciar_sesion" %} method="POST">
         {% csrf_token %}

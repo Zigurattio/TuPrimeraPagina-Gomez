@@ -4,21 +4,24 @@ from pagina.models import Cigarro
 from pagina.forms import FormularioCreacionCigarro
 from django.views.generic.edit import UpdateView, DeleteView
 from django.urls import reverse_lazy
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 def inicio(request):
     return render(request, 'inicio/inicio.html') 
 
-
+@login_required
 def crear_cigarro(request):
     
     if request.method == 'POST':
         print(request.POST)
-        formulario = FormularioCreacionCigarro(request.POST)
+        formulario = FormularioCreacionCigarro(request.POST, request.FILES)
         if formulario.is_valid():
             marca_nueva = formulario.cleaned_data.get('marca')
             cantidad_nueva = formulario.cleaned_data.get('cantidad')
+            imagen_nueva = formulario.cleaned_data.get('imagen')
             
-            cigarro = Cigarro(marca=marca_nueva, cantidad=cantidad_nueva)
+            cigarro = Cigarro(marca=marca_nueva, cantidad=cantidad_nueva, imagen=imagen_nueva)
             cigarro.save()
             
             return redirect('listado_de_cigarros')
@@ -44,14 +47,15 @@ def detalle_cigarro(request, cigarro_id):
     
     return render (request, 'inicio/detalle_cigarro.html', {'cigarro': cigarro}) 
 
-class ActualizarCigarro(UpdateView):
+
+class ActualizarCigarro(LoginRequiredMixin, UpdateView):
     model = Cigarro
     template_name = "inicio/actualizar_cigarro.html"
     fields = "__all__"
-    success_url = reverse_lazy("listado_cigarros"),
+    success_url = reverse_lazy('listado_de_cigarros')
     
     
-class EliminarCigarro(DeleteView):
+class EliminarCigarro(LoginRequiredMixin,DeleteView):
     model = Cigarro
     template_name = "inicio/eliminar_cigarro.html"
     success_url = reverse_lazy("listado_de_cigarros")
